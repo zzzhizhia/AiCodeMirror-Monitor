@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EEB2FCEA2F0D226100BF926A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB2FCE92F0D226100BF926A /* WidgetKit.framework */; };
+		EEB2FCEC2F0D226100BF926A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB2FCEB2F0D226100BF926A /* SwiftUI.framework */; };
+		EEB2FCF82F0D226200BF926A /* BalanceWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = EEB2FCE72F0D226000BF926A /* BalanceWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EEB2FD022F0D24A300BF926A /* SharedKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB2FCFF2F0D24A300BF926A /* SharedKeychainService.swift */; };
+		EEB2FD032F0D24A300BF926A /* SharedBalanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB2FCFE2F0D24A300BF926A /* SharedBalanceData.swift */; };
+		EEB2FD042F0D24A300BF926A /* SharedStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB2FD002F0D24A300BF926A /* SharedStorageService.swift */; };
+		EEB2FD052F0D24A300BF926A /* SharedKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB2FCFF2F0D24A300BF926A /* SharedKeychainService.swift */; };
+		EEB2FD062F0D24A300BF926A /* SharedBalanceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB2FCFE2F0D24A300BF926A /* SharedBalanceData.swift */; };
+		EEB2FD072F0D24A300BF926A /* SharedStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB2FD002F0D24A300BF926A /* SharedStorageService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EEB2FCF62F0D226200BF926A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEB2FCCC2F0D1F5200BF926A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEB2FCE62F0D226000BF926A;
+			remoteInfo = BalanceWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EEB2FCFD2F0D226200BF926A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EEB2FCF82F0D226200BF926A /* BalanceWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		EEB2FCD42F0D1F5200BF926A /* AiCodeMirror Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AiCodeMirror Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEB2FCE72F0D226000BF926A /* BalanceWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BalanceWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEB2FCE92F0D226100BF926A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		EEB2FCEB2F0D226100BF926A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		EEB2FCFE2F0D24A300BF926A /* SharedBalanceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedBalanceData.swift; sourceTree = "<group>"; };
+		EEB2FCFF2F0D24A300BF926A /* SharedKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedKeychainService.swift; sourceTree = "<group>"; };
+		EEB2FD002F0D24A300BF926A /* SharedStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedStorageService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EEB2FCF92F0D226200BF926A /* Exceptions for "BalanceWidget" folder in "BalanceWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = EEB2FCE62F0D226000BF926A /* BalanceWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		EEB2FCD62F0D1F5200BF926A /* AiCodeMirror Monitor */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "AiCodeMirror Monitor";
+			sourceTree = "<group>";
+		};
+		EEB2FCED2F0D226100BF926A /* BalanceWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EEB2FCF92F0D226200BF926A /* Exceptions for "BalanceWidget" folder in "BalanceWidgetExtension" target */,
+			);
+			path = BalanceWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EEB2FCD12F0D1F5200BF926A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEB2FCE42F0D226000BF926A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEB2FCEC2F0D226100BF926A /* SwiftUI.framework in Frameworks */,
+				EEB2FCEA2F0D226100BF926A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EEB2FCCB2F0D1F5200BF926A = {
+			isa = PBXGroup;
+			children = (
+				EEB2FD012F0D24A300BF926A /* Shared */,
+				EEB2FCD62F0D1F5200BF926A /* AiCodeMirror Monitor */,
+				EEB2FCED2F0D226100BF926A /* BalanceWidget */,
+				EEB2FCE82F0D226100BF926A /* Frameworks */,
+				EEB2FCD52F0D1F5200BF926A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EEB2FCD52F0D1F5200BF926A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EEB2FCD42F0D1F5200BF926A /* AiCodeMirror Monitor.app */,
+				EEB2FCE72F0D226000BF926A /* BalanceWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EEB2FCE82F0D226100BF926A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEB2FCE92F0D226100BF926A /* WidgetKit.framework */,
+				EEB2FCEB2F0D226100BF926A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEB2FD012F0D24A300BF926A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				EEB2FCFE2F0D24A300BF926A /* SharedBalanceData.swift */,
+				EEB2FCFF2F0D24A300BF926A /* SharedKeychainService.swift */,
+				EEB2FD002F0D24A300BF926A /* SharedStorageService.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EEB2FCD32F0D1F5200BF926A /* AiCodeMirror Monitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEB2FCE02F0D1F5300BF926A /* Build configuration list for PBXNativeTarget "AiCodeMirror Monitor" */;
+			buildPhases = (
+				EEB2FCD02F0D1F5200BF926A /* Sources */,
+				EEB2FCD12F0D1F5200BF926A /* Frameworks */,
+				EEB2FCD22F0D1F5200BF926A /* Resources */,
+				EEB2FCFD2F0D226200BF926A /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEB2FCF72F0D226200BF926A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EEB2FCD62F0D1F5200BF926A /* AiCodeMirror Monitor */,
+			);
+			name = "AiCodeMirror Monitor";
+			packageProductDependencies = (
+			);
+			productName = "AiCodeMirror Monitor";
+			productReference = EEB2FCD42F0D1F5200BF926A /* AiCodeMirror Monitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EEB2FCE62F0D226000BF926A /* BalanceWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEB2FCFA2F0D226200BF926A /* Build configuration list for PBXNativeTarget "BalanceWidgetExtension" */;
+			buildPhases = (
+				EEB2FCE32F0D226000BF926A /* Sources */,
+				EEB2FCE42F0D226000BF926A /* Frameworks */,
+				EEB2FCE52F0D226000BF926A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				EEB2FCED2F0D226100BF926A /* BalanceWidget */,
+			);
+			name = BalanceWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = BalanceWidgetExtension;
+			productReference = EEB2FCE72F0D226000BF926A /* BalanceWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EEB2FCCC2F0D1F5200BF926A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					EEB2FCD32F0D1F5200BF926A = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					EEB2FCE62F0D226000BF926A = {
+						CreatedOnToolsVersion = 16.4;
+					};
+				};
+			};
+			buildConfigurationList = EEB2FCCF2F0D1F5200BF926A /* Build configuration list for PBXProject "AiCodeMirror Monitor" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EEB2FCCB2F0D1F5200BF926A;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EEB2FCD52F0D1F5200BF926A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EEB2FCD32F0D1F5200BF926A /* AiCodeMirror Monitor */,
+				EEB2FCE62F0D226000BF926A /* BalanceWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EEB2FCD22F0D1F5200BF926A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEB2FCE52F0D226000BF926A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EEB2FCD02F0D1F5200BF926A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEB2FD052F0D24A300BF926A /* SharedKeychainService.swift in Sources */,
+				EEB2FD062F0D24A300BF926A /* SharedBalanceData.swift in Sources */,
+				EEB2FD072F0D24A300BF926A /* SharedStorageService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEB2FCE32F0D226000BF926A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEB2FD022F0D24A300BF926A /* SharedKeychainService.swift in Sources */,
+				EEB2FD032F0D24A300BF926A /* SharedBalanceData.swift in Sources */,
+				EEB2FD042F0D24A300BF926A /* SharedStorageService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EEB2FCF72F0D226200BF926A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEB2FCE62F0D226000BF926A /* BalanceWidgetExtension */;
+			targetProxy = EEB2FCF62F0D226200BF926A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		EEB2FCDE2F0D1F5300BF926A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EEB2FCDF2F0D1F5300BF926A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		EEB2FCE12F0D1F5300BF926A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "AiCodeMirror Monitor/AiCodeMirror_Monitor.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zzzhizhi.AiCodeMirror-Monitor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EEB2FCE22F0D1F5300BF926A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "AiCodeMirror Monitor/AiCodeMirror_Monitor.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zzzhizhi.AiCodeMirror-Monitor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EEB2FCFB2F0D226200BF926A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BalanceWidget/BalanceWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BalanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BalanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zzzhizhi.AiCodeMirror-Monitor.BalanceWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EEB2FCFC2F0D226200BF926A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BalanceWidget/BalanceWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BalanceWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BalanceWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zzzhizhi.AiCodeMirror-Monitor.BalanceWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EEB2FCCF2F0D1F5200BF926A /* Build configuration list for PBXProject "AiCodeMirror Monitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEB2FCDE2F0D1F5300BF926A /* Debug */,
+				EEB2FCDF2F0D1F5300BF926A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEB2FCE02F0D1F5300BF926A /* Build configuration list for PBXNativeTarget "AiCodeMirror Monitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEB2FCE12F0D1F5300BF926A /* Debug */,
+				EEB2FCE22F0D1F5300BF926A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEB2FCFA2F0D226200BF926A /* Build configuration list for PBXNativeTarget "BalanceWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEB2FCFB2F0D226200BF926A /* Debug */,
+				EEB2FCFC2F0D226200BF926A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EEB2FCCC2F0D1F5200BF926A /* Project object */;
+}
