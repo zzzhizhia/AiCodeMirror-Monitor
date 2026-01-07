@@ -1,3 +1,6 @@
+# Local configuration (contains DEVELOPMENT_TEAM)
+Config.xcconfig
+
 # Xcode
 build/
 DerivedData/

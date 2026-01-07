@@ -1,0 +1,9 @@
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// Copy this file to Config.xcconfig and fill in your values
+// DO NOT commit Config.xcconfig to git
+
+// Your Apple Development Team ID
+// Find it at: https://developer.apple.com/account -> Membership details
+DEVELOPMENT_TEAM = YOUR_TEAM_ID_HERE
