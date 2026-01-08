@@ -39,69 +39,56 @@ struct MediumWidgetView: View {
 
     @ViewBuilder
     private func loggedInView(balance: AccountBalance) -> some View {
-        HStack(spacing: 0) {
-            // 左侧 - 按量付费余额
-            if let paygo = balance.payAsYouGoBalance {
-                VStack(alignment: .leading, spacing: 6) {
-                    Label("按量付费", systemImage: "creditcard.fill")
-                        .font(.caption2.weight(.medium))
-                        .foregroundStyle(.secondary)
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                // 左侧 - 订阅余额
+                if let sub = balance.subscriptionBalance {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Label("订阅余额", systemImage: "star.fill")
+                            .font(.caption2.weight(.medium))
+                            .foregroundStyle(.secondary)
 
-                    Text(paygo.formattedBalance)
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundStyle(.primary)
-                        .minimumScaleFactor(0.5)
-
-                    if let spent = paygo.monthlySpent {
-                        Text("本月: \(String(format: "%.2f", spent))")
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-            }
-
-            if balance.payAsYouGoBalance != nil && balance.subscriptionBalance != nil {
-                Divider()
-                    .padding(.vertical, 12)
-            }
-
-            // 右侧 - 订阅余额
-            if let sub = balance.subscriptionBalance {
-                VStack(alignment: .leading, spacing: 6) {
-                    Label(sub.planName, systemImage: "star.fill")
-                        .font(.caption2.weight(.medium))
-                        .foregroundStyle(.secondary)
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("\(Int(sub.remainingAmount))/\(Int(sub.totalAmount))")
-                            .font(.system(size: 32, weight: .bold))
+                        Text(String(format: "¥%.2f", sub.remainingAmount))
+                            .font(.system(size: 36, weight: .bold))
                             .foregroundStyle(.primary)
-
-                        ProgressView(value: 1 - sub.usagePercentage)
-                            .tint(progressColor(for: sub.usagePercentage))
+                            .minimumScaleFactor(0.5)
                     }
-
-                    if let resetDate = sub.resetDate {
-                        Text("重置: \(resetDate, style: .date)")
-                            .font(.caption2)
-                            .foregroundStyle(.tertiary)
-                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
-            }
-        }
-    }
 
-    private func progressColor(for percentage: Double) -> Color {
-        if percentage > 0.8 {
-            return .red
-        } else if percentage > 0.6 {
-            return .orange
-        } else {
-            return .green
+                if balance.subscriptionBalance != nil && balance.payAsYouGoBalance != nil {
+                    Divider()
+                        .padding(.vertical, 12)
+                }
+
+                // 右侧 - 按量付费余额
+                if let paygo = balance.payAsYouGoBalance {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Label("按量付费余额", systemImage: "creditcard.fill")
+                            .font(.caption2.weight(.medium))
+                            .foregroundStyle(.secondary)
+
+                        Text(paygo.formattedBalance)
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundStyle(.primary)
+                            .minimumScaleFactor(0.5)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+                }
+            }
+
+            // WebView 标识
+            if balance.fetchMethod == .webview {
+                HStack {
+                    Spacer()
+                    Text("🐢")
+                        .font(.caption2)
+                }
+                .padding(.trailing, 8)
+                .padding(.bottom, 4)
+            }
         }
     }
 

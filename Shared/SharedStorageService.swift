@@ -1,4 +1,5 @@
 import Foundation
+import WidgetKit
 
 /// App Group 共享存储服务
 /// 用于在主 App 和 Widget 之间共享非敏感数据
@@ -6,12 +7,46 @@ public final class SharedStorageService {
     public static let shared = SharedStorageService()
 
     private let appGroupIdentifier = "group.com.aicodemirror-monitor"
+    private let widgetCacheTokenKey = "widget_cache_token"
 
     private var sharedDefaults: UserDefaults? {
         UserDefaults(suiteName: appGroupIdentifier)
     }
 
     private init() {}
+
+    // MARK: - Widget Kinds
+
+    public enum WidgetKind {
+        public static let smallBalance = "SmallBalanceWidget"
+        public static let balanceDetail = "BalanceWidget"
+    }
+
+    // MARK: - Widget Cache Token
+
+    @discardableResult
+    public func bumpWidgetCacheToken() -> String {
+        let token = UUID().uuidString
+        sharedDefaults?.set(token, forKey: widgetCacheTokenKey)
+        sharedDefaults?.synchronize()
+        return token
+    }
+
+    public func getWidgetCacheToken() -> String {
+        if let token = sharedDefaults?.string(forKey: widgetCacheTokenKey) {
+            return token
+        }
+        let token = UUID().uuidString
+        sharedDefaults?.set(token, forKey: widgetCacheTokenKey)
+        sharedDefaults?.synchronize()
+        return token
+    }
+
+    public func reloadWidgets() {
+        WidgetCenter.shared.reloadTimelines(ofKind: WidgetKind.smallBalance)
+        WidgetCenter.shared.reloadTimelines(ofKind: WidgetKind.balanceDetail)
+        WidgetCenter.shared.reloadAllTimelines()
+    }
 
     // MARK: - Balance Data
 
@@ -170,7 +205,8 @@ public final class SharedStorageService {
             isLoggedInKey,
             lastUpdateKey,
             settingsKey,
-            lastNotificationKey
+            lastNotificationKey,
+            widgetCacheTokenKey
         ]
         keys.forEach { defaults.removeObject(forKey: $0) }
         defaults.synchronize()

@@ -59,39 +59,27 @@ struct LargeWidgetView: View {
                 }
 
                 Spacer()
+
+                // WebView 标识
+                if balance.fetchMethod == .webview {
+                    Text("🐢")
+                        .font(.title3)
+                        .help("使用 WebView 获取（较慢）")
+                }
             }
 
             Divider()
 
-            // 按量付费卡片
-            if let paygo = balance.payAsYouGoBalance {
+            // 订阅卡片
+            if let sub = balance.subscriptionBalance {
                 VStack(alignment: .leading, spacing: 8) {
-                    Label("按量付费 (PAYGO)", systemImage: "creditcard.fill")
+                    Label("订阅余额", systemImage: "star.fill")
                         .font(.caption.weight(.medium))
                         .foregroundStyle(.secondary)
 
-                    HStack(alignment: .bottom, spacing: 4) {
-                        Text(paygo.formattedBalance)
-                            .font(.system(size: 42, weight: .bold))
-                            .foregroundStyle(.primary)
-
-                        Text("可用余额")
-                            .font(.caption)
-                            .foregroundStyle(.tertiary)
-                            .padding(.bottom, 4)
-                    }
-
-                    if let spent = paygo.monthlySpent {
-                        HStack {
-                            Text("本月消费")
-                                .font(.caption)
-                                .foregroundStyle(.tertiary)
-
-                            Text(String(format: "%.2f %@", spent, paygo.currency))
-                                .font(.caption.bold())
-                                .foregroundStyle(.secondary)
-                        }
-                    }
+                    Text(String(format: "¥%.2f", sub.remainingAmount))
+                        .font(.system(size: 42, weight: .bold))
+                        .foregroundStyle(.primary)
                 }
                 .padding(12)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -99,55 +87,16 @@ struct LargeWidgetView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
 
-            // 订阅卡片
-            if let sub = balance.subscriptionBalance {
+            // 按量付费卡片
+            if let paygo = balance.payAsYouGoBalance {
                 VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Label("\(sub.planName) 套餐", systemImage: "star.fill")
-                            .font(.caption.weight(.medium))
-                            .foregroundStyle(.secondary)
+                    Label("按量付费余额", systemImage: "creditcard.fill")
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(.secondary)
 
-                        Spacer()
-
-                        if let resetDate = sub.resetDate {
-                            Text("重置: \(resetDate, style: .date)")
-                                .font(.caption2)
-                                .foregroundStyle(.tertiary)
-                        }
-                    }
-
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack {
-                            Text("已使用")
-                                .font(.caption)
-                                .foregroundStyle(.tertiary)
-
-                            Spacer()
-
-                            Text("\(Int(sub.usedAmount)) / \(Int(sub.totalAmount)) \(sub.unit)")
-                                .font(.caption.bold())
-                                .foregroundStyle(.secondary)
-                        }
-
-                        ProgressView(value: sub.usagePercentage)
-                            .tint(progressColor(for: sub.usagePercentage))
-
-                        HStack {
-                            Text("剩余")
-                                .font(.caption)
-                                .foregroundStyle(.tertiary)
-
-                            Text("\(Int(sub.remainingAmount)) \(sub.unit)")
-                                .font(.caption.bold())
-                                .foregroundStyle(.secondary)
-
-                            Spacer()
-
-                            Text("\(Int((1 - sub.usagePercentage) * 100))%")
-                                .font(.caption.bold())
-                                .foregroundStyle(progressColor(for: sub.usagePercentage))
-                        }
-                    }
+                    Text(paygo.formattedBalance)
+                        .font(.system(size: 42, weight: .bold))
+                        .foregroundStyle(.primary)
                 }
                 .padding(12)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -158,16 +107,6 @@ struct LargeWidgetView: View {
             Spacer(minLength: 0)
         }
         .padding()
-    }
-
-    private func progressColor(for percentage: Double) -> Color {
-        if percentage > 0.8 {
-            return .red
-        } else if percentage > 0.6 {
-            return .orange
-        } else {
-            return .green
-        }
     }
 
     private var errorView: some View {

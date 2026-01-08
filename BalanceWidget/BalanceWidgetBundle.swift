@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct BalanceWidgetBundle: WidgetBundle {
     var body: some Widget {
+        SmallBalanceWidget()
         BalanceWidget()
     }
 }

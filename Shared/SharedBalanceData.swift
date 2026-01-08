@@ -1,5 +1,13 @@
 import Foundation
 
+// MARK: - 数据获取方式
+
+/// 数据获取方式
+public enum FetchMethod: String, Codable {
+    case lightweight = "lightweight"  // 轻量级 HTTP 直接解析
+    case webview = "webview"          // WebView 渲染
+}
+
 // MARK: - 账户余额数据模型
 
 /// 账户余额数据 - 主 App 和 Widget 共享
@@ -12,17 +20,21 @@ public struct AccountBalance: Codable, Equatable {
     public let lastUpdated: Date
     /// 用户标识 (邮箱/手机号)
     public let userIdentifier: String?
+    /// 数据获取方式
+    public let fetchMethod: FetchMethod?
 
     public init(
         subscriptionBalance: SubscriptionBalance? = nil,
         payAsYouGoBalance: PayAsYouGoBalance? = nil,
         lastUpdated: Date = Date(),
-        userIdentifier: String? = nil
+        userIdentifier: String? = nil,
+        fetchMethod: FetchMethod? = nil
     ) {
         self.subscriptionBalance = subscriptionBalance
         self.payAsYouGoBalance = payAsYouGoBalance
         self.lastUpdated = lastUpdated
         self.userIdentifier = userIdentifier
+        self.fetchMethod = fetchMethod
     }
 }
 
@@ -89,6 +101,7 @@ public struct PayAsYouGoBalance: Codable, Equatable {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.currencyCode = currency
+        formatter.currencySymbol = currency == "CNY" ? "¥" : nil
         formatter.maximumFractionDigits = 2
         return formatter.string(from: NSNumber(value: currentBalance)) ?? "\(currency) \(currentBalance)"
     }
@@ -157,12 +170,12 @@ public struct WidgetBalanceEntry: Codable {
                 planName: "PRO",
                 usedAmount: 50,
                 totalAmount: 100,
-                unit: "USD",
+                unit: "天",
                 resetDate: Calendar.current.date(byAdding: .day, value: 15, to: Date())
             ),
             payAsYouGoBalance: PayAsYouGoBalance(
-                currentBalance: 25.50,
-                currency: "USD",
+                currentBalance: 305.00,
+                currency: "CNY",
                 monthlySpent: 10.00
             ),
             lastUpdated: Date(),

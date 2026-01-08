@@ -1,6 +1,11 @@
 # Local configuration (contains DEVELOPMENT_TEAM)
 Config.xcconfig
 
+# Debug/test files
+example.html
+debug.log
+response.html
+
 # Xcode
 build/
 DerivedData/

@@ -19,7 +19,6 @@ struct ContentView: View {
         .sheet(isPresented: $showingLoginSheet) {
             LoginView(isPresented: $showingLoginSheet)
                 .environmentObject(authViewModel)
-                .frame(width: 500, height: 600)
         }
         .onAppear {
             authViewModel.checkLoginState()

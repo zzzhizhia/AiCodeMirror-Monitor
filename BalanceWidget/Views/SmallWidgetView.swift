@@ -15,6 +15,7 @@ struct SmallWidgetView: View {
                 errorView
             }
         }
+        .id(entry.cacheToken)
         .containerBackground(.fill.tertiary, for: .widget)
     }
 
@@ -34,46 +35,95 @@ struct SmallWidgetView: View {
     @ViewBuilder
     private func loggedInView(balance: AccountBalance) -> some View {
         VStack(alignment: .leading, spacing: 6) {
-            // 标题
+            // 根据 displayType 显示对应内容
+            switch entry.displayType {
+            case .payAsYouGo:
+                payAsYouGoView(balance: balance)
+            case .subscription:
+                subscriptionView(balance: balance)
+            }
+
+            // WebView 标识
+            if balance.fetchMethod == .webview {
+                HStack {
+                    Spacer()
+                    Text("🐢")
+                        .font(.caption2)
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        .padding()
+    }
+
+    @ViewBuilder
+    private func payAsYouGoView(balance: AccountBalance) -> some View {
+        // 标题
+        HStack(spacing: 4) {
+            Image(systemName: "creditcard.fill")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            Text("按量付费余额")
+                .font(.caption2.weight(.medium))
+                .foregroundStyle(.secondary)
+        }
+
+        Spacer()
+
+        // 余额显示
+        if let paygo = balance.payAsYouGoBalance {
+            Text(paygo.formattedBalance)
+                .font(.system(size: 36, weight: .bold))
+                .foregroundStyle(.primary)
+                .minimumScaleFactor(0.5)
+        } else {
+            Text("暂无数据")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+
+        Spacer()
+    }
+
+    @ViewBuilder
+    private func subscriptionView(balance: AccountBalance) -> some View {
+        // 标题
+        if let sub = balance.subscriptionBalance {
             HStack(spacing: 4) {
-                Image(systemName: "creditcard.fill")
+                Image(systemName: "star.fill")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
-                Text("余额")
+                Text("订阅余额")
                     .font(.caption2.weight(.medium))
                     .foregroundStyle(.secondary)
             }
 
             Spacer()
 
-            // 主要余额显示
-            if let paygo = balance.payAsYouGoBalance {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(paygo.formattedBalance)
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundStyle(.primary)
-                        .minimumScaleFactor(0.5)
+            Text(String(format: "¥%.2f", sub.remainingAmount))
+                .font(.system(size: 36, weight: .bold))
+                .foregroundStyle(.primary)
+                .minimumScaleFactor(0.5)
 
-                    Text("按量付费")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-                }
-            } else if let sub = balance.subscriptionBalance {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("\(Int(sub.remainingAmount))")
-                        .font(.system(size: 36, weight: .bold))
-                        .foregroundStyle(.primary)
-
-                    Text("\(sub.planName) 剩余")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-                }
+            Spacer()
+        } else {
+            HStack(spacing: 4) {
+                Image(systemName: "star.fill")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                Text("订阅余额")
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(.secondary)
             }
 
             Spacer()
+
+            Text("暂无数据")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .padding()
     }
 
     private var errorView: some View {
