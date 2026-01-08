@@ -1,6 +1,5 @@
 import Foundation
 import Combine
-import WidgetKit
 
 /// 认证视图模型
 @MainActor
@@ -61,7 +60,8 @@ final class AuthViewModel: ObservableObject {
             storage.saveLoginState(true)
 
             // 刷新 Widget
-            WidgetCenter.shared.reloadAllTimelines()
+            storage.bumpWidgetCacheToken()
+            storage.reloadWidgets()
 
         } catch {
             authError = error
@@ -83,7 +83,8 @@ final class AuthViewModel: ObservableObject {
         authState = .loggedOut
 
         // 刷新 Widget
-        WidgetCenter.shared.reloadAllTimelines()
+        storage.bumpWidgetCacheToken()
+        storage.reloadWidgets()
     }
 
     /// 是否已登录

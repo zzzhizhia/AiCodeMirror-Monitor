@@ -1,10 +1,10 @@
 import SwiftUI
-import WidgetKit
 
 /// 菜单栏视图
 struct MenuBarView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var balanceViewModel: BalanceViewModel
+    private let storage = SharedStorageService.shared
 
     @Environment(\.openWindow) private var openWindow
 
@@ -58,31 +58,31 @@ struct MenuBarView: View {
                     BalanceRow(
                         icon: "creditcard.fill",
                         iconColor: .blue,
-                        title: "按量付费",
+                        title: "按量付费余额",
                         value: paygo.formattedBalance
                     )
                 }
 
                 // 订阅余额
                 if let sub = balance.subscriptionBalance {
-                    VStack(alignment: .leading, spacing: 4) {
-                        BalanceRow(
-                            icon: "star.fill",
-                            iconColor: .purple,
-                            title: sub.planName,
-                            value: "\(Int(sub.remainingAmount))/\(Int(sub.totalAmount))"
-                        )
-
-                        // 进度条
-                        ProgressView(value: 1 - sub.usagePercentage)
-                            .tint(progressColor(for: sub.usagePercentage))
-                            .scaleEffect(x: 1, y: 0.6, anchor: .center)
-                    }
+                    BalanceRow(
+                        icon: "star.fill",
+                        iconColor: .purple,
+                        title: "订阅余额",
+                        value: String(format: "¥%.2f", sub.remainingAmount)
+                    )
                 }
 
                 // 更新时间
                 HStack {
                     Spacer()
+
+                    // WebView 标识
+                    if balance.fetchMethod == .webview {
+                        Text("🐢")
+                            .font(.caption2)
+                    }
+
                     Text("更新于 \(balance.lastUpdated, style: .relative)")
                         .font(.caption2)
                         .foregroundColor(.secondary)
@@ -156,7 +156,8 @@ struct MenuBarView: View {
             .buttonStyle(.plain)
 
             Button(action: {
-                WidgetCenter.shared.reloadAllTimelines()
+                storage.bumpWidgetCacheToken()
+                storage.reloadWidgets()
             }) {
                 HStack {
                     Image(systemName: "widget.small")
@@ -178,19 +179,6 @@ struct MenuBarView: View {
                 }
             }
             .buttonStyle(.plain)
-        }
-    }
-
-    // MARK: - Helpers
-
-    private func progressColor(for usagePercentage: Double) -> Color {
-        let remaining = 1 - usagePercentage
-        if remaining < 0.2 {
-            return .red
-        } else if remaining < 0.4 {
-            return .orange
-        } else {
-            return .green
         }
     }
 }

@@ -30,6 +30,8 @@ struct SettingsView: View {
                 }
                 .onChange(of: refreshInterval) { _, newValue in
                     storage.refreshIntervalMinutes = newValue
+                    storage.bumpWidgetCacheToken()
+                    storage.reloadWidgets()
                 }
             } header: {
                 Text("自动刷新")
@@ -53,7 +55,7 @@ struct SettingsView: View {
                     HStack {
                         Text("余额阈值")
                         Spacer()
-                        TextField("", value: $lowBalanceThreshold, format: .currency(code: "USD"))
+                        TextField("", value: $lowBalanceThreshold, format: .currency(code: "CNY"))
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 100)
                             .multilineTextAlignment(.trailing)

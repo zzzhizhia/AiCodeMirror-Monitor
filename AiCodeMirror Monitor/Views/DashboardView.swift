@@ -1,10 +1,10 @@
 import SwiftUI
-import WidgetKit
 
 /// 仪表板视图
 struct DashboardView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var balanceViewModel: BalanceViewModel
+    private let storage = SharedStorageService.shared
 
     var body: some View {
         ScrollView {
@@ -168,7 +168,8 @@ struct DashboardView: View {
             }
 
             Button(action: {
-                WidgetCenter.shared.reloadAllTimelines()
+                storage.bumpWidgetCacheToken()
+                storage.reloadWidgets()
             }) {
                 Label("刷新 Widget", systemImage: "widget.small")
             }
@@ -195,24 +196,13 @@ struct PayGoBalanceCard: View {
             HStack {
                 Image(systemName: "creditcard.fill")
                     .foregroundColor(.blue)
-                Text("按量付费")
+                Text("按量付费余额")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
 
             Text(balance.formattedBalance)
                 .font(.system(size: 32, weight: .bold))
-
-            if let spent = balance.monthlySpent {
-                HStack {
-                    Text("本月消费")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Text(String(format: "%.2f %@", spent, balance.currency))
-                        .font(.caption)
-                        .fontWeight(.medium)
-                }
-            }
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -229,61 +219,18 @@ struct SubscriptionBalanceCard: View {
             HStack {
                 Image(systemName: "star.fill")
                     .foregroundColor(.purple)
-                Text(subscription.planName)
+                Text("订阅余额")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-
-                Spacer()
-
-                if let resetDate = subscription.resetDate {
-                    Text("重置: \(resetDate, style: .date)")
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                }
             }
 
-            HStack(alignment: .bottom, spacing: 4) {
-                Text("\(Int(subscription.remainingAmount))")
-                    .font(.system(size: 32, weight: .bold))
-
-                Text("/ \(Int(subscription.totalAmount)) \(subscription.unit)")
-                    .font(.body)
-                    .foregroundColor(.secondary)
-                    .padding(.bottom, 4)
-            }
-
-            VStack(alignment: .leading, spacing: 4) {
-                ProgressView(value: 1 - subscription.usagePercentage)
-                    .tint(progressColor)
-
-                HStack {
-                    Text("已使用 \(Int(subscription.usagePercentage * 100))%")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-
-                    Spacer()
-
-                    Text("剩余 \(Int((1 - subscription.usagePercentage) * 100))%")
-                        .font(.caption)
-                        .foregroundColor(progressColor)
-                }
-            }
+            Text(String(format: "¥%.2f", subscription.remainingAmount))
+                .font(.system(size: 32, weight: .bold))
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(NSColor.controlBackgroundColor))
         .cornerRadius(12)
-    }
-
-    private var progressColor: Color {
-        let remaining = 1 - subscription.usagePercentage
-        if remaining < 0.2 {
-            return .red
-        } else if remaining < 0.4 {
-            return .orange
-        } else {
-            return .green
-        }
     }
 }
 

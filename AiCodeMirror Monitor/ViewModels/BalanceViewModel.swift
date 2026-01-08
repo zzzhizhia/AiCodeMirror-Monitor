@@ -1,6 +1,5 @@
 import Foundation
 import Combine
-import WidgetKit
 import AppKit
 
 /// 余额视图模型
@@ -51,8 +50,9 @@ final class BalanceViewModel: ObservableObject {
                 )
                 try? storage.saveWidgetEntry(entry)
 
-                // 刷新 Widget
-                WidgetCenter.shared.reloadAllTimelines()
+                // 刷新 Widget（同时更新缓存标记）
+                storage.bumpWidgetCacheToken()
+                storage.reloadWidgets()
 
                 // 检查余额预警
                 checkLowBalanceWarning(newBalance)
